@@ -1,20 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Home.css'
 
 function Home ()  {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [number, setNumber] = useState("");
+    const [messages, setMessages] = useState("");
+
+
+
+    const getFormData = (e) => {
+        e.preventDefault();
+    };
+
+    const submitFormData = () =>{
+        console.log(name, email, number, messages)
+        setName("");
+        setEmail("");
+        setNumber("");
+        setMessages("");
+    }
+
   return (
-    <body>
+    <div className='body' >
          <div className='Hero-section'>
              <div className='nav'>
                  <div className='logo'>MetroHaven</div>
                  <div className='link'>
                 <ul>
-                    <li>Home</li>
-                    <li>Services</li>
-                    <li>Property</li>
-                    <li>Blogs</li>
-                    <li>Contact us</li>
-                    <li>About us</li>
+        
                 </ul>
             </div>
             <div className='registration-button'>
@@ -28,25 +42,6 @@ function Home ()  {
             <div className='Hero-button'>
                 <button id='book-now'>Book now</button>
                 <button id='explore'>Explore</button>
-            </div>
-        </div>
-        <div className='Date-section'>
-            <div className='pay-button'>
-                <button id='buy'>Buy</button>
-                <button id='rent'>Rent</button>
-            </div>
-            <div className='time'>
-                <div> <h2>Location</h2> <p>Long Beach California</p> </div>
-                <div> <h2>Start</h2> <p>Dec 12, 10:30PM</p> </div>
-                <div> <h2>End</h2> <p>Dec 20 , 10:30PM</p> </div>
-                <button>
-                    <img width={25} src="./s2.png" alt="" />
-                </button>
-            </div>
-            <div className='testimony'>
-                <div><h1>200</h1> <p>Award <br /> Winning</p> </div>
-                <div><h1>500+</h1> <p>Happy <br /> Customers</p></div>
-                <div> <h1>100+</h1> <p>Property <br /> Ready</p> </div>
             </div>
         </div>
          </div>
@@ -105,16 +100,26 @@ function Home ()  {
                     <h1>About <span>Us</span></h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem modi perferendis autem maxime aspernatur, laboriosam delectus voluptate praesentium, accusamus fugit amet voluptates suscipit! Nisi hic, earum consequatur nam officiis modi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam voluptatem, perspiciatis commodi autem adipisci laborum quo exercitationem accusantium ea nam.
                     </p>
-                    <br />
-                    <br />
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, velit! Neque dolore ratione perferendis earum alias, harum doloremque esse. Eveniet, aperiam explicabo esse quod, magni quis ea doloremque ad fuga quaerat sit voluptatibus maxime dolorum quae animi exercitationem quidem dolores sequi doloribus quam. Doloremque voluptatem est obcaecati provident! Unde, quas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae modi explicabo accusantium eveniet fugiat enim iste pariatur assumenda. Laboriosam accusamus necessitatibus perspiciatis molestiae reprehenderit quos corrupti, amet quae, delectus inventore sunt praesentium ab itaque, animi alias vero labore magnam? Temporibus amet non, ipsa corporis, illum eius dolore, deleniti sunt debitis nobis aliquam ab! Nostrum quod quia at veniam quae. Cum. </p>
                 </div>
                 <div className='image'>
 
                 </div>
             </div>
          </div>
-    </body>
+         <div className='form-page' >
+            <div className='form-main' >
+                <h2>Send us your feedback - we value your opinion</h2>
+                <form onSubmit={getFormData}>
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder='Name'  /> <br />  <br />
+                    <input type="text" value={email} onChange={ (e) => setEmail(e.target.value) } placeholder='Email' /> <br /> <br />
+                    <input type="number" value={number} onChange={(e) =>setNumber(e.target.value) } placeholder='Room Number '  /> <br /> <br />
+                    <textarea name="text" id="messages" value={messages} onChange={(e)=> setMessages(e.target.value) } rows={10} cols={60} placeholder='Feedback' ></textarea> <br />
+
+                    <button onClick={submitFormData} >Submit</button>
+                </form>
+            </div>
+         </div>
+    </div>
 
   )
 };
